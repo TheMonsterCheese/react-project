@@ -1,5 +1,6 @@
 {
   "name": "react-project",
+  "homepage": "http://TheMonsterCheese.github.io/react-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
