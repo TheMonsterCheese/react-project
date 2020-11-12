@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
+import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
   state = {
     persons: [
       { id: "asdf1", name: "Eric", age: 23},
-      { id: "asdf2", name: 'Kevin', age: 26}
+      { id: "asdf2", name: 'Kevin', age: 26},
+      { id: "asb;dl", name: "Bob", age: 22}
     ],
     otherState: 'some other value',
     showPersons: false
@@ -49,11 +51,15 @@ togglePersonsHandler = () => {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
       //use inline style to scope it to only one element
   };
 
@@ -71,24 +77,45 @@ togglePersonsHandler = () => {
           age={person.age}
           key={person.id}
           changed={(event) => this.nameChangedHandler(event, person.id)} />;
+
+          
       })}
-      </div> )
+      </div>
+       );
+
+      style.backgroundColor='red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
   }
 
+  const classes = [];
+
+  if(this.state.persons.length <= 2)
+  {
+    classes.push('red'); //classes = [red];
+  }
+  if(this.state.persons.length<=1)
+  {
+    classes.push('bold');
+  }
 
     return (
+    <StyleRoot>
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p> This is really working!</p>
+        <p className={classes.join(' ')}> This is really working!</p>
         <button
         style={style}
         onClick={this.togglePersonsHandler}> Toggle Persons</button>
         {persons} 
   
       </div>
+    </StyleRoot>
       );
     // compiles to this: return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
     }
 }
 
-export default App;
+export default Radium(App);
