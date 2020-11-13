@@ -113,13 +113,6 @@ togglePersonsHandler = () => {
 
         <p></p>
 
-        <a
-          href='./favicon.png'
-         // target="_blank"
-
-        >
-          My Resume
-          </a>
       </div>
     </StyleRoot>
 
