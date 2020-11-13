@@ -110,9 +110,20 @@ togglePersonsHandler = () => {
         style={style}
         onClick={this.togglePersonsHandler}> Toggle Persons</button>
         {persons} 
-  
+
+        <p></p>
+
+        <a
+          href='./favicon.png'
+         // target="_blank"
+
+        >
+          My Resume
+          </a>
       </div>
     </StyleRoot>
+
+  
       );
     // compiles to this: return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
     }
